@@ -21,6 +21,10 @@ header {
     list-style: none;
     display: flex;
 
+    @include responsive() {
+        display: none;
+    }
+
     li {
         margin-left: 24px;
     }
@@ -65,9 +69,75 @@ header {
     max-width: 88px;
 }
 
+.nav-hamburguer {
+    display: none;
+
+    @include responsive() {
+        display: block;
+    }
+}
+
+.bx {
+    width: 48px;
+    height: 48px;
+    border-radius: 10%;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 30%;
+        left: 15%;
+        width: 70%;
+        height: 10%;
+        border-radius: 20px;
+        background-color: white;
+        transition: 1s ease;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 60%;
+        left: 45%;
+        width: 40%;
+        height: 10%;
+        border-radius: 20px;
+        background-color: white;
+        transition: 1s ease;
+    }
+}
+
+#hamburguer {
+    display: none;
+}
+
+#hamburguer:checked~label .bx {
+    &:after {
+        transform: rotate(225deg);
+        top: 45%;
+        left: 15%;
+        width: 70%;
+        height: 10%;
+        background-color: $red-light;
+    }
+
+    &:before {
+        transform: rotate(-405deg);
+        top: 45%;
+        left: 15%;
+        width: 70%;
+        height: 10%;
+        background-color: $red-light;
+    }
+}
 
 .nav-social {
     display: flex;
+
+    @include responsive() {
+        display: none;
+    }
 
     svg {
         cursor: pointer;
